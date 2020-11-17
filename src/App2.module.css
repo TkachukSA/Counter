@@ -1,0 +1,98 @@
+.App2 {
+    background-color: #263152;
+    width: 1480px;
+    height: 960px;
+}
+.window{
+    width: 380px;
+    height: 300px;
+    border: 3px solid #08a4ff;
+    border-radius: 20px;
+    background: #263152;
+    position: center;
+    display: inline-block;
+    text-align: center;
+    margin-top: 150px;
+    margin-right: 250px;
+
+    float: right;
+}
+.total {
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 160px;
+    border: 3px solid #08a4ff;
+}
+
+.click{
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 100px;
+    border: 3px solid #08a4ff;
+
+
+}
+.one {
+    display: inline-block;
+    margin-top: 0;
+}
+
+
+
+.window1{
+    width: 380px;
+    height: 300px;
+    border: 3px solid #08a4ff;
+    border-radius: 20px;
+    background: #263152;
+    position: center;
+    display: inline-block;
+    text-align: center;
+   margin-left: 250px;
+    margin-top: 150px;
+    float: left;
+}
+.total1 {
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 160px;
+    border: 3px solid #08a4ff;
+}
+
+.click1{
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 100px;
+    border: 3px solid #08a4ff;
+    padding-right: 10px;
+
+
+}
+.one1 {
+    display: inline-block;
+    margin-top: auto;
+}
