@@ -15,18 +15,15 @@ function App2() {
 
 
     function maxNumber() {
-        return setMaxnum(maxNum + 1)
-    }
+        return setMaxnum(maxNum + 1)}
 
     function minNumber() {
-        return setMaxnum(maxNum - 1)
-    }
+        return setMaxnum(maxNum - 1)}
 
 
     function numPlusOne() {
         if (startNumber < maxNum) {
-            return setStartNumber(startNumber + 1)
-        }
+            return setStartNumber(startNumber + 1)}
     }
 
     function resetNumber() {

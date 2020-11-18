@@ -1,0 +1,12 @@
+.bottoms {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #08a4ff;
+    font-size: 35px;
+    padding-right: 10px;
+    margin-right: 20px;
+}
+.wid{
+    margin-left: -200px;
+}

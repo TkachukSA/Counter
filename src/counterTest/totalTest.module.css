@@ -1,0 +1,41 @@
+.total{
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 160px;
+    border: 3px solid #08a4ff;
+}
+.window{
+    width: 380px;
+    height: 300px;
+    border: 3px solid #08a4ff;
+    border-radius: 20px;
+    background: #263152;
+    position: center;
+    display: inline-block;
+    text-align: center;
+    margin-top: 150px;
+    margin-right: 250px;
+
+    float: right;
+}
+.click{
+    position: center;
+    margin-top: 10px;
+    text-align: center;
+    text-align-all: center;
+    font-size: 60px;
+    margin-left: 12px;
+    border-radius: 10px;
+    width: 350px;
+    height: 100px;
+    border: 3px solid #08a4ff;
+
+
+}
