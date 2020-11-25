@@ -9,3 +9,15 @@
     display: inline-block;
 ;
 }
+
+.bottomsRed {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: red;
+    font-size: 10px;
+    padding-right: 10px;
+    margin-right: 20px;
+    display: inline-block;
+;
+}

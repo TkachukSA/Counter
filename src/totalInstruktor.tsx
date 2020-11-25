@@ -1,14 +1,17 @@
 import React, {ChangeEvent, useState} from 'react';
-import './chack.css';
+import s from"./totalInstruktor.module.css"
 
 type TotalT={
     counter: number
-
+    maxNum: number
+    error: string
 }
 
 function TotalInstruktor(props: TotalT) {
 
-    let totlnumbers= props.counter
+    let totlnumbers= props.error? "error": props.counter
+    let errorColor = props.counter == props.maxNum? s.red: s.yellow
+
 
 
 
@@ -17,9 +20,8 @@ function TotalInstruktor(props: TotalT) {
     return (<div>
 
 
-       {/* <input type="number" value={3} onChange={}></input>*/}
 
-        <div>{totlnumbers}</div>
+        <div className={errorColor}>{totlnumbers}</div>
 
 
     </div> );
