@@ -9,27 +9,28 @@ function App2() {
 
     const [startNumber, setStartNumber] = useState(0)
     const [maxNum, setMaxnum] = useState(0)
+    const [btnStart, setBtnStart] = useState(false)
+    const [btnRest, setbtnRest] = useState(false)
 
 
     const changeNumber = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = Number(e.currentTarget.value)
+        const value = Number(+e.currentTarget.value)
         setMaxnum(value)
+
     }
     const changeNumberStart = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = Number(e.currentTarget.value)
+        const value = Number(+e.currentTarget.value)
         setStartNumber(value)
 
     }
 
-    const [btnStart, setBtnStart] = useState(false)
-    const [btnRest, setbtnRest] = useState(true)
+
     function numPlusOne() {
         if (startNumber < maxNum) {
             return setStartNumber(startNumber + 1)
         }
-        debugger
         if (startNumber == maxNum) {
-             setBtnStart(!btnStart)
+             setBtnStart(true)
             setbtnRest(!btnRest)
 
 
@@ -39,30 +40,23 @@ function App2() {
 
 
     function resetNumber() {
-        debugger
-
         return setStartNumber(0); setBtnStart(true)
     }
-    const error = (startNumber >= maxNum) ? "error" : "";
+    const error = (startNumber >= maxNum || startNumber<0) ? "error" : "";
 
-    /*if (startNumber > maxNum) {
-        alert("error")
-    }*/
+
 
 
 
     return (
         <div className={s.App2}>
             <div className={s.window}>
-
-
                 <div className={s.total}><TotalInstruktor
                     error={error}
                     counter={startNumber}
                     maxNum={maxNum}
                 /> tut norm
                 </div>
-
                 <div className={s.click}>
                     <div className={s.one}><Bottoms title="start"
                                                     btnStartFunction={btnStart}
@@ -87,12 +81,11 @@ function App2() {
                 />
                 {error}
                 <div>
-                    <Bottoms title="max"/>
-                    <Bottoms title="min"/>
+                    <Bottoms title="Save"/>
+
                 </div>
             </div>
             <div>
-
             </div>
 
 

@@ -10,19 +10,11 @@ type TotalT={
 function TotalInstruktor(props: TotalT) {
 
     let totlnumbers= props.error? "error": props.counter
-    let errorColor = props.counter == props.maxNum? s.red: s.yellow
-
-
-
-
+    let errorColor = props.counter >= props.maxNum || props.counter < 0 || props.maxNum <0? s.red: s.yellow
 
 
     return (<div>
-
-
-
         <div className={errorColor}>{totlnumbers}</div>
-
 
     </div> );
 }
