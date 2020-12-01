@@ -9,8 +9,10 @@ function App2() {
 
     const [startNumber, setStartNumber] = useState(0)
     const [maxNum, setMaxnum] = useState(0)
+
     const [btnStart, setBtnStart] = useState(false)
     const [btnRest, setbtnRest] = useState(false)
+    const [saveBtn, setSaveBtn] = useState(false)
 
 
     const changeNumber = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,40 +29,46 @@ function App2() {
 
     function numPlusOne() {
         if (startNumber < maxNum) {
-            return setStartNumber(startNumber + 1)
-        }
-        if (startNumber == maxNum) {
-             setBtnStart(true)
-            setbtnRest(!btnRest)
-
+             setStartNumber(startNumber + 1)
+            setBtnStart(false)
+            setbtnRest(false)
 
         }
-        setStartNumber(startNumber)
     }
 
 
     function resetNumber() {
-        return setStartNumber(0); setBtnStart(true)
+         setStartNumber(0)
+
     }
+
+    function saveBotton(){
+        setSaveBtn(false)
+        setbtnRest(true)
+        setBtnStart(false)
+    }
+
+
     const error = (startNumber >= maxNum || startNumber<0) ? "error" : "";
-
-
-
 
 
     return (
         <div className={s.App2}>
             <div className={s.window}>
                 <div className={s.total}><TotalInstruktor
-                    error={error}
-                    counter={startNumber}
-                    maxNum={maxNum}
+                                                     error={error}
+                                                     counter={startNumber}
+                                                     maxNum={maxNum}
                 /> tut norm
                 </div>
                 <div className={s.click}>
                     <div className={s.one}><Bottoms title="start"
                                                     btnStartFunction={btnStart}
-                                                    onClick={numPlusOne}/></div>
+                                                    onClick={numPlusOne}
+                                                    disabledBtnStart={startNumber===maxNum? true: false}
+                    /></div>
+
+
 
                     <div className={s.one}><Bottoms title="stop"
                                                     btnStartFunction={btnRest}
@@ -81,7 +89,10 @@ function App2() {
                 />
                 {error}
                 <div>
-                    <Bottoms title="Save"/>
+                    <Bottoms title="Set"
+                             onClick={saveBotton}
+                             /*onClick={}*/
+                    />
 
                 </div>
             </div>
