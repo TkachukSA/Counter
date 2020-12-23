@@ -7,72 +7,105 @@ import TotalInstruktor from "./totalInstruktor";
 
 function App2() {
 
-    const [startNumber, setStartNumber] = useState(0)
     const [maxNum, setMaxnum] = useState(0)
+    const [minNum, setMinNum] = useState(0)
+    const [counter, setCounter] = useState(0)
+    let [incDisabled, setIncDisabled] = useState<boolean>(true)
+    let [resetDisabled, setResetDisabled] = useState<boolean>(true)
+    let [error, setError] = useState<string>('')
+    let [settingsButtonDisabled, setSettingsButtonDisabled] = useState<boolean>(true)
 
-    const [btnStart, setBtnStart] = useState(false)
-    const [btnRest, setbtnRest] = useState(false)
-    const [saveBtn, setSaveBtn] = useState(false)
 
 
-    const changeNumber = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = Number(+e.currentTarget.value)
-        setMaxnum(value)
 
+    const changeMaxValue = (maxValue: number) => {
+
+        if (maxValue == minNum || maxValue < 0 || minNum < 0) {
+            setError('Incorrect Value')
+            setSettingsButtonDisabled(true)
+        } else {
+            setSettingsButtonDisabled(false)
+            setError('Enter values and press SET')
+        }
+        setMaxnum(maxValue)
     }
-    const changeNumberStart = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = Number(+e.currentTarget.value)
-        setStartNumber(value)
 
+
+    const changeMinValue = (minValue: number) => {
+        if (minValue < 0 ) {
+          setError('Incorrect Value')
+            setSettingsButtonDisabled(true)
+            setIncDisabled(true)
+            setResetDisabled(true)
+
+        } else {
+            setSettingsButtonDisabled(false)
+            setError("Enter values and press SET")
+        }
+        setMinNum(minValue)
+    }
+
+    const set = () => {
+        setError('')
+        setSettingsButtonDisabled(true)
+        setCounter(minNum)
+        setIncDisabled(false)
+        setResetDisabled(false)
+
+        // Setting data into local storage
+       // localStorage.setItem('minValue', minValue.toString())
+        //localStorage.setItem('maxValue', maxValue.toString())
     }
 
 
-    function numPlusOne() {
-        if (startNumber < maxNum) {
-             setStartNumber(startNumber + 1)
-            setBtnStart(false)
-            setbtnRest(false)
 
+    const increment = () => {
+       // current = counter + 1
+       // localStorage.setItem('current', current.toString())
+        if (counter< maxNum) {
+            setSettingsButtonDisabled(true)
+            setCounter(counter + 1)
+        }
+        if (counter === maxNum) {
+            setIncDisabled(true)
+            setResetDisabled(false)
         }
     }
 
-
-    function resetNumber() {
-         setStartNumber(0)
-
-    }
-
-    function saveBotton(){
-        setSaveBtn(false)
-        setbtnRest(true)
-        setBtnStart(false)
+    const reset = () => {
+        setCounter(minNum)
+        setIncDisabled(false)
     }
 
 
-    const error = (startNumber >= maxNum || startNumber<0) ? "error" : "";
 
 
     return (
         <div className={s.App2}>
             <div className={s.window}>
                 <div className={s.total}><TotalInstruktor
-                                                     error={error}
-                                                     counter={startNumber}
+
+                                                     counter={counter}
                                                      maxNum={maxNum}
-                /> tut norm
+                                                     minNum={minNum}
+                                                     error={error}
+                />
                 </div>
                 <div className={s.click}>
-                    <div className={s.one}><Bottoms title="start"
-                                                    btnStartFunction={btnStart}
-                                                    onClick={numPlusOne}
-                                                    disabledBtnStart={startNumber===maxNum? true: false}
+                    <div className={s.one}><Bottoms title="inc"
+                                                    disabled={incDisabled}
+                                                    execFunc={increment}
+
                     /></div>
 
 
 
-                    <div className={s.one}><Bottoms title="stop"
-                                                    btnStartFunction={btnRest}
-                                                    onClick={resetNumber}/></div>
+                    <div className={s.one}><Bottoms title="reset"
+                                                    disabled={resetDisabled}
+                                                    execFunc={reset}
+                    />
+
+                    </div>
                 </div>
             </div>
 
@@ -81,17 +114,19 @@ function App2() {
 
 
             <div className={s.window1}>
-                <Total counter={maxNum}
-                       changeNumber={changeNumber}
+                <Total
+                       maxValueTitle={'max-value'}
+                       startValueTitle={'start-value'}
+                       minNum={minNum}
                        maxNum={maxNum}
-                       changeNumberStart={changeNumberStart}
-                       startNumber={startNumber}
+                       changeMaxValue={changeMaxValue}
+                       changeMinValue={changeMinValue}
                 />
                 {error}
                 <div>
                     <Bottoms title="Set"
-                             onClick={saveBotton}
-                             /*onClick={}*/
+                             disabled={settingsButtonDisabled}
+                             execFunc={set}
                     />
 
                 </div>

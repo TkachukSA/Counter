@@ -2,16 +2,31 @@ import React, {ChangeEvent, useState} from 'react';
 import s from "./total.module.css"
 
 type TotalT = {
-    counter: number
+
     maxNum: number
-    changeNumber: (e: ChangeEvent<HTMLInputElement>) => void
-    startNumber: number
-    changeNumberStart: (e: ChangeEvent<HTMLInputElement>) => void
+    minNum: number
+    changeMaxValue:(maxValue: number)=>void
+    changeMinValue:(minValue: number)=>void
+    maxValueTitle: string
+    startValueTitle: string
+
 }
 
 function Total(props: TotalT) {
 
-    let totlnumbers = props.counter
+
+    const changeNumber = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = (+e.currentTarget.value)
+        props.changeMaxValue(value)
+
+    }
+    const changeNumberStart = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = Number(e.currentTarget.value)
+        props.changeMinValue(value)
+
+    }
+
+
 
 
     return (<div className={s.total1}>
@@ -19,17 +34,16 @@ function Total(props: TotalT) {
             <div className={s.one1}> Max Value <input type="number"
                                                       step={1}
                                                       value={props.maxNum}
-                                                      onChange={props.changeNumber}
+                                                      onChange={changeNumber}
             /></div>
 
             <div className={s.one1}> Start Value <input type="number"
                                                         step={1}
-                                                        value={props.startNumber}
-                                                        onChange={props.changeNumberStart}
+                                                        value={props.minNum}
+                                                        onChange={changeNumberStart}
             /></div>
 
 
-            <div>{totlnumbers}</div>
 
 
         </div>

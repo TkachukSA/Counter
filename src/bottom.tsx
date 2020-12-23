@@ -2,10 +2,10 @@ import React from 'react';
 import s from "./bottom.module.css"
 
 type BottomsType={
-    onClick?: ()=>void
+
     title: string
-    btnStartFunction?: boolean
-    disabledBtnStart?: boolean
+    disabled: boolean
+    execFunc: ()=> void
 
 }
 
@@ -15,8 +15,8 @@ function Bottoms(props: BottomsType) {
 
 
             <button className={s.bottoms}
-                    disabled={props.disabledBtnStart? true: false}
-                    onClick={props.onClick}
+                    disabled={props.disabled}
+                    onClick={()=>{props.execFunc()}}
             >
                 {props.title}
             </button>
